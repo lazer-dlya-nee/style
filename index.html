@@ -22,6 +22,25 @@ font-family:'Inter', sans-serif;
 color:#4a4540;
 padding:20px;
 }
+  .collection-view{
+margin-top:26px;
+}
+
+.collection-preview{
+background:#f3eee8;
+border-radius:14px;
+padding:10px;
+box-shadow:0 4px 14px rgba(0,0,0,0.04);
+}
+
+.collection-preview img{
+width:100%;
+display:block;
+border-radius:10px;
+aspect-ratio:4/5;
+object-fit:cover;
+background:#e8e1d8;
+}
 
 .container{
 max-width:420px;
@@ -92,52 +111,71 @@ margin-bottom:18px;
 .products{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:12px;
+gap:14px;
+align-items:start;
 }
 
 .product{
 background:#f3eee8;
-border-radius:12px;
+border-radius:14px;
 overflow:hidden;
+display:flex;
+flex-direction:column;
+min-width:0;
+box-shadow:0 4px 14px rgba(0,0,0,0.04);
 }
 
 .product img{
 width:100%;
+aspect-ratio:3/4;
+object-fit:cover;
 display:block;
+background:#e8e1d8;
 }
 
 .product-body{
-padding:10px;
+padding:12px 10px 14px;
 text-align:center;
+display:flex;
+flex-direction:column;
+gap:8px;
+flex:1;
 }
 
 .product-body h3{
 font-family:'Playfair Display', serif;
-margin:0 0 4px;
+margin:0;
 font-size:18px;
+line-height:1.1;
+color:#4a4540;
+min-height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
 }
-  
-.product img{
-aspect-ratio:3/4;
-object-fit:cover;
-}
-  
+
 .product-body p{
 font-size:12px;
+line-height:1.35;
 color:#777;
-margin:0 0 8px;
+margin:0;
+min-height:34px;
 }
 
 .mini-btn{
-display:inline-block;
-background:#ded2c6;
-padding:6px 12px;
-border-radius:20px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+align-self:center;
+min-height:38px;
+padding:8px 14px;
+border-radius:999px;
 font-size:12px;
 text-decoration:none;
 color:#4a4540;
+background:#ded2c6;
+white-space:nowrap;
 }
-
 .bottom{
 display:flex;
 gap:14px;
@@ -216,89 +254,101 @@ font-size:13px;
 
 <div class="products">
 
-<div class="products">
-
 <div class="product">
-<img src="images/beige.jpg">
+<img src="images/beige.jpg" alt="Бежевый">
 <div class="product-body">
 <h3>Бежевый</h3>
 <p>Нежный универсальный оттенок.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/cranberry.jpg">
+<img src="images/cranberry.jpg" alt="Брусничный">
 <div class="product-body">
 <h3>Брусничный</h3>
 <p>Глубокий ягодный цвет.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/blue-gray.jpg">
+<img src="images/blue-gray.jpg" alt="Сине-серый">
 <div class="product-body">
 <h3>Сине-серый</h3>
 <p>Спокойный джинсовый оттенок.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/gray-denim.jpg">
+<img src="images/gray-denim.jpg" alt="Серый деним">
 <div class="product-body">
 <h3>Серый деним</h3>
 <p>Классический базовый цвет.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/linen.jpg">
+<img src="images/linen.jpg" alt="Льняной">
 <div class="product-body">
 <h3>Льняной</h3>
 <p>Натуральный светлый оттенок.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/olive.jpg">
+<img src="images/olive.jpg" alt="Оливковый">
 <div class="product-body">
 <h3>Оливковый</h3>
 <p>Природный спокойный цвет.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/pink.jpg">
+<img src="images/pink.jpg" alt="Розовый">
 <div class="product-body">
 <h3>Розовый</h3>
 <p>Мягкий нежный оттенок.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/white.jpg">
+<img src="images/white.jpg" alt="Белый">
 <div class="product-body">
 <h3>Белый</h3>
 <p>Чистый светлый цвет.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
 <div class="product">
-<img src="images/yellow.jpg">
+<img src="images/yellow.jpg" alt="Жёлтый">
 <div class="product-body">
 <h3>Жёлтый</h3>
 <p>Солнечный яркий акцент.</p>
-<a class="mini-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">Смотреть на Ozon</a>
+<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
 </div>
 </div>
 
+</div>
+<section id="collection-view" class="collection-view">
+
+<h2 class="section-title">Просмотр коллекции</h2>
+
+<p class="section-sub">
+Выберите оттенок и посмотрите все фотографии коллекции MarinaS HM.
+</p>
+
+<div class="collection-preview">
+  <img src="images/beige.jpg" alt="Коллекция MarinaS HM">
+</div>
+
+</section>
 </div>
 
 
@@ -331,5 +381,6 @@ font-size:13px;
 
 </body>
 </html>
+
 
 
