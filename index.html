@@ -11,6 +11,50 @@
 
 <style>
 
+.bottom-section{
+margin-top:40px;
+background:#f4efe9;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 8px 24px rgba(0,0,0,0.05);
+}
+
+.bottom-photo img{
+width:100%;
+display:block;
+aspect-ratio:4/3;
+object-fit:cover;
+}
+
+.bottom-text{
+padding:20px 22px 26px;
+}
+
+.bottom-text h2{
+font-family:'Playfair Display', serif;
+font-size:24px;
+margin:0 0 12px;
+color:#4a4540;
+}
+
+.bottom-text ul{
+margin:0 0 18px;
+padding-left:18px;
+color:#6d6660;
+line-height:1.6;
+font-size:14px;
+}
+
+.bottom-btn{
+display:inline-block;
+padding:12px 18px;
+border-radius:999px;
+background:#e6dfd6;
+color:#4a4540;
+text-decoration:none;
+font-size:14px;
+}
+
 .sticky-ozon{
 position:fixed;
 left:50%;
@@ -560,26 +604,30 @@ transform:translateY(0);
 
 </div>
 
-<div class="bottom">
+<section class="bottom-section">
 
-<img src="images/product.jpg">
+  <div class="bottom-photo">
+    <img src="images/collection-table.jpg" alt="Коллекция MarinaS HM">
+  </div>
 
-<div class="why">
+  <div class="bottom-text">
 
-<h3>Почему выбирают MarinaS HM</h3>
+    <h2>Почему выбирают MarinaS HM</h2>
 
-<ul>
-<li>ручная работа</li>
-<li>универсальный размер</li>
-<li>стильный аксессуар</li>
-<li>подходит для большинства смартфонов</li>
-</ul>
+    <ul>
+      <li>ручная работа</li>
+      <li>универсальный размер</li>
+      <li>стильный аксессуар</li>
+      <li>подходит для большинства смартфонов</li>
+    </ul>
 
-<a class="cta" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">
-Смотреть на Ozon
-</a>
+    <a class="bottom-btn" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">
+      Смотреть на Ozon
+    </a>
 
-</div>
+  </div>
+
+</section>
 
 </div>
 
@@ -803,6 +851,7 @@ document.querySelectorAll('.fade-in').forEach(el => {
 </a>
 </body>
 </html>
+
 
 
 
