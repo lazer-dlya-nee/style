@@ -359,7 +359,16 @@ text-decoration:none;
 color:#4a4540;
 font-size:13px;
 }
+.fade-in{
+opacity:0;
+transform:translateY(20px);
+transition:all .6s ease;
+}
 
+.fade-in.visible{
+opacity:1;
+transform:translateY(0);
+}
 </style>
 
 </head>
@@ -400,7 +409,7 @@ font-size:13px;
 
 <div class="products">
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/beige.jpg" alt="">
 <div class="product-body">
 <h3>Бежевый</h3>
@@ -409,7 +418,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/cranberry.jpg" alt="">
 <div class="product-body">
 <h3>Брусничный</h3>
@@ -418,7 +427,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/blue-gray.jpg" alt="">
 <div class="product-body">
 <h3>Сине-серый</h3>
@@ -427,7 +436,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/gray-denim.jpg" alt="">
 <div class="product-body">
 <h3>Серый деним</h3>
@@ -436,7 +445,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/linen.jpg" alt="">
 <div class="product-body">
 <h3>Льняной</h3>
@@ -445,7 +454,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/olive.jpg" alt="">
 <div class="product-body">
 <h3>Оливковый</h3>
@@ -454,7 +463,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/pink.jpg" alt="">
 <div class="product-body">
 <h3>Розовый</h3>
@@ -463,7 +472,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/white.jpg" alt="">
 <div class="product-body">
 <h3>Белый</h3>
@@ -472,7 +481,7 @@ font-size:13px;
 </div>
 </div>
 
-<div class="product">
+<div class="products fade-in">
 <img src="images/yellow.jpg" alt="">
 <div class="product-body">
 <h3>Жёлтый</h3>
@@ -719,9 +728,22 @@ document.addEventListener("keydown", function(e){
   if(e.key === "ArrowLeft") prevImage();
   if(e.key === "ArrowRight") nextImage();
 });
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer.observe(el);
+});
 </script>
 </body>
 </html>
+
 
 
 
