@@ -25,7 +25,141 @@ padding:20px;
   .collection-view{
 margin-top:26px;
 }
+.gallery-modal{
+position:fixed;
+inset:0;
+display:none;
+z-index:9999;
+}
 
+.gallery-modal.active{
+display:block;
+}
+
+.gallery-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(4px);
+}
+
+.gallery-box{
+position:relative;
+z-index:2;
+width:calc(100% - 24px);
+max-width:420px;
+max-height:90vh;
+overflow:auto;
+margin:5vh auto;
+background:#f8f4ef;
+border-radius:18px;
+padding:18px 14px 20px;
+box-shadow:0 18px 40px rgba(0,0,0,0.2);
+}
+
+.gallery-close{
+position:absolute;
+top:10px;
+right:10px;
+width:36px;
+height:36px;
+border:none;
+border-radius:50%;
+background:#e7ddd2;
+color:#4a4540;
+font-size:24px;
+cursor:pointer;
+}
+
+.gallery-title{
+font-family:'Playfair Display', serif;
+font-size:26px;
+text-align:center;
+margin:6px 36px 14px;
+color:#4a4540;
+}
+
+.gallery-main-wrap{
+position:relative;
+background:#efe7de;
+border-radius:14px;
+overflow:hidden;
+}
+
+.gallery-image{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+display:block;
+background:#e8e1d8;
+}
+
+.gallery-arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:36px;
+height:36px;
+border:none;
+border-radius:50%;
+background:rgba(255,255,255,0.9);
+color:#4a4540;
+font-size:24px;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.gallery-arrow.left{
+left:10px;
+}
+
+.gallery-arrow.right{
+right:10px;
+}
+
+.gallery-thumbs{
+display:flex;
+gap:8px;
+overflow-x:auto;
+padding-top:12px;
+padding-bottom:4px;
+}
+
+.gallery-thumbs img{
+width:62px;
+height:62px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+opacity:0.7;
+border:2px solid transparent;
+flex:0 0 auto;
+background:#e8e1d8;
+}
+
+.gallery-thumbs img.active{
+opacity:1;
+border-color:#bfa58a;
+}
+
+.gallery-ozon{
+display:block;
+margin:14px auto 0;
+text-align:center;
+text-decoration:none;
+background:#1677ff;
+padding:12px 18px;
+border-radius:999px;
+color:white;
+font-size:14px;
+width:210px;
+}
+
+.mini-btn{
+border:none;
+cursor:pointer;
+font-family:inherit;
+}
 .collection-preview{
 background:#f3eee8;
 border-radius:14px;
@@ -259,7 +393,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Бежевый</h3>
 <p>Нежный универсальный оттенок.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('beige')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -268,7 +402,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Брусничный</h3>
 <p>Глубокий ягодный цвет.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('cranberry')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -277,7 +411,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Сине-серый</h3>
 <p>Спокойный джинсовый оттенок.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('blue-gray')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -286,7 +420,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Серый деним</h3>
 <p>Классический базовый цвет.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('gray-denim')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -295,7 +429,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Льняной</h3>
 <p>Натуральный светлый оттенок.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('linen')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -304,7 +438,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Оливковый</h3>
 <p>Природный спокойный цвет.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('olive')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -313,7 +447,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Розовый</h3>
 <p>Мягкий нежный оттенок.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('pink')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -322,7 +456,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Белый</h3>
 <p>Чистый светлый цвет.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('white')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -331,7 +465,7 @@ font-size:13px;
 <div class="product-body">
 <h3>Жёлтый</h3>
 <p>Солнечный яркий акцент.</p>
-<a class="mini-btn" href="#collection-view">Смотреть коллекцию</a>
+<button class="mini-btn" onclick="openGallery('yellow')">Смотреть коллекцию</button>
 </div>
 </div>
 
@@ -378,9 +512,205 @@ font-size:13px;
 </div>
 
 </div>
+<div id="galleryModal" class="gallery-modal">
+  <div class="gallery-overlay" onclick="closeGallery()"></div>
 
+  <div class="gallery-box">
+    <button class="gallery-close" onclick="closeGallery()">×</button>
+
+    <h2 id="galleryTitle" class="gallery-title"></h2>
+
+    <div class="gallery-main-wrap">
+      <button class="gallery-arrow left" onclick="prevImage()">‹</button>
+      <img id="galleryImage" class="gallery-image" src="" alt="">
+      <button class="gallery-arrow right" onclick="nextImage()">›</button>
+    </div>
+
+    <div id="galleryThumbs" class="gallery-thumbs"></div>
+
+    <a class="gallery-ozon" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">
+      Смотреть на Ozon
+    </a>
+  </div>
+</div>
+  <script>
+const galleryData = {
+  "beige": {
+    title: "Бежевый",
+    images: [
+      "images/beige/1.jpg",
+      "images/beige/2.jpg",
+      "images/beige/3.jpg",
+      "images/beige/4.jpg",
+      "images/beige/5.jpg",
+      "images/beige/6.jpg"
+    ]
+  },
+  "cranberry": {
+    title: "Брусничный",
+    images: [
+      "images/cranberry/1.jpg",
+      "images/cranberry/2.jpg",
+      "images/cranberry/3.jpg",
+      "images/cranberry/4.jpg",
+      "images/cranberry/5.jpg",
+      "images/cranberry/6.jpg",
+      "images/cranberry/7.jpg"
+    ]
+  },
+  "blue-gray": {
+    title: "Сине-серый",
+    images: [
+      "images/blue-gray/1.jpg",
+      "images/blue-gray/2.jpg",
+      "images/blue-gray/3.jpg",
+      "images/blue-gray/4.jpg",
+      "images/blue-gray/5.jpg",
+      "images/blue-gray/6.jpg"
+    ]
+  },
+  "gray-denim": {
+    title: "Серый деним",
+    images: [
+      "images/gray-denim/1.jpg",
+      "images/gray-denim/2.jpg",
+      "images/gray-denim/3.jpg",
+      "images/gray-denim/4.jpg",
+      "images/gray-denim/5.jpg",
+      "images/gray-denim/6.jpg"
+    ]
+  },
+  "linen": {
+    title: "Льняной",
+    images: [
+      "images/linen/1.jpg",
+      "images/linen/2.jpg",
+      "images/linen/3.jpg",
+      "images/linen/4.jpg"
+    ]
+  },
+  "olive": {
+    title: "Оливковый",
+    images: [
+      "images/olive/1.jpg",
+      "images/olive/2.jpg",
+      "images/olive/3.jpg",
+      "images/olive/4.jpg",
+      "images/olive/5.jpg",
+      "images/olive/6.jpg"
+    ]
+  },
+  "pink": {
+    title: "Розовый",
+    images: [
+      "images/pink/1.jpg",
+      "images/pink/2.jpg",
+      "images/pink/3.jpg",
+      "images/pink/4.jpg",
+      "images/pink/5.jpg",
+      "images/pink/6.jpg",
+      "images/pink/7.jpg"
+    ]
+  },
+  "white": {
+    title: "Белый",
+    images: [
+      "images/white/1.jpg",
+      "images/white/2.jpg",
+      "images/white/3.jpg",
+      "images/white/4.jpg",
+      "images/white/5.jpg",
+      "images/white/6.jpg",
+      "images/white/7.jpg",
+      "images/white/8.jpg",
+      "images/white/9.jpg"
+    ]
+  },
+  "yellow": {
+    title: "Жёлтый",
+    images: [
+      "images/yellow/1.jpg",
+      "images/yellow/2.jpg",
+      "images/yellow/3.jpg",
+      "images/yellow/4.jpg",
+      "images/yellow/5.jpg",
+      "images/yellow/6.jpg",
+      "images/yellow/7.jpg"
+    ]
+  }
+};
+
+let currentColor = "";
+let currentIndex = 0;
+
+function openGallery(color){
+  currentColor = color;
+  currentIndex = 0;
+
+  const modal = document.getElementById("galleryModal");
+  const title = document.getElementById("galleryTitle");
+
+  title.textContent = galleryData[color].title;
+
+  renderGallery();
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeGallery(){
+  document.getElementById("galleryModal").classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function renderGallery(){
+  const image = document.getElementById("galleryImage");
+  const thumbs = document.getElementById("galleryThumbs");
+  const data = galleryData[currentColor];
+
+  image.src = data.images[currentIndex];
+  image.alt = data.title;
+
+  thumbs.innerHTML = "";
+
+  data.images.forEach((src, index) => {
+    const thumb = document.createElement("img");
+    thumb.src = src;
+    thumb.alt = data.title;
+    if(index === currentIndex){
+      thumb.classList.add("active");
+    }
+    thumb.onclick = () => {
+      currentIndex = index;
+      renderGallery();
+    };
+    thumbs.appendChild(thumb);
+  });
+}
+
+function prevImage(){
+  const total = galleryData[currentColor].images.length;
+  currentIndex = (currentIndex - 1 + total) % total;
+  renderGallery();
+}
+
+function nextImage(){
+  const total = galleryData[currentColor].images.length;
+  currentIndex = (currentIndex + 1) % total;
+  renderGallery();
+}
+
+document.addEventListener("keydown", function(e){
+  const modal = document.getElementById("galleryModal");
+  if(!modal.classList.contains("active")) return;
+
+  if(e.key === "Escape") closeGallery();
+  if(e.key === "ArrowLeft") prevImage();
+  if(e.key === "ArrowRight") nextImage();
+});
+</script>
 </body>
 </html>
+
 
 
 
