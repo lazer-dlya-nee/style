@@ -779,7 +779,7 @@ document.addEventListener("keydown", function(e){
   if(e.key === "ArrowLeft") prevImage();
   if(e.key === "ArrowRight") nextImage();
 });
-<script>
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -792,12 +792,18 @@ document.querySelectorAll('.fade-in').forEach(el => {
   observer.observe(el);
 });
 </script>
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer.observe(el);
+});
+</script>
   <a class="sticky-ozon" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">
   <span class="sticky-ozon-icon">OZ</span>
   Смотреть на Ozon
 </a>
 </body>
 </html>
+
 
 
 
