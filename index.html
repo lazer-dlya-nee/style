@@ -253,29 +253,39 @@
     }
 
     .ozon-btn{
-      position:fixed;
-      left:50%;
-      bottom:18px;
-      transform:translateX(-50%);
-      width:calc(100% - 28px);
-      max-width:380px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:15px 18px;
-      border-radius:999px;
-      background:rgba(0,119,255,0.96);
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      font-size:16px;
-      box-shadow:0 14px 34px rgba(0,0,0,0.18);
-      backdrop-filter:blur(10px);
-      -webkit-backdrop-filter:blur(10px);
-      transition:transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
-      z-index:100;
-    }
+position:fixed;
+left:50%;
+bottom:18px;
+transform:translateX(-50%);
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+
+padding:11px 16px;
+
+border-radius:999px;
+
+background:#1677ff;
+color:#fff;
+
+font-weight:500;
+font-size:14px;
+
+text-decoration:none;
+
+box-shadow:0 8px 22px rgba(0,0,0,0.18);
+
+transition:all 0.25s ease;
+
+z-index:100;
+}
+
+.ozon-btn:hover{
+transform:translateX(-50%) scale(1.05);
+box-shadow:0 12px 28px rgba(0,0,0,0.22);
+}
 
     .ozon-btn:hover{
       transform:translateX(-50%) scale(1.02);
@@ -283,15 +293,17 @@
     }
 
     .ozon-icon{
-      width:22px;
-      height:22px;
+      .ozon-icon{
+width:18px;
+height:18px;
+font-size:9px;
       border-radius:999px;
       background:#fff;
       color:#0077ff;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:11px;
+      
       font-weight:700;
       flex:0 0 auto;
       letter-spacing:0.3px;
@@ -582,3 +594,4 @@
 </body>
 
 </html>
+
