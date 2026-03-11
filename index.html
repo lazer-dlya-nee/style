@@ -11,6 +11,60 @@
 
 <style>
 
+.sticky-ozon{
+position:fixed;
+left:50%;
+bottom:18px;
+transform:translateX(-50%);
+z-index:999;
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+width:calc(100% - 32px);
+max-width:360px;
+
+padding:14px 18px;
+border-radius:999px;
+
+background:rgba(22,119,255,0.96);
+color:#fff;
+text-decoration:none;
+font-size:15px;
+font-weight:500;
+
+box-shadow:0 12px 28px rgba(0,0,0,0.18);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+
+transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+}
+
+.sticky-ozon:hover{
+transform:translateX(-50%) translateY(-2px);
+box-shadow:0 16px 34px rgba(0,0,0,0.22);
+}
+
+.sticky-ozon-icon{
+width:22px;
+height:22px;
+border-radius:50%;
+background:#fff;
+color:#1677ff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:10px;
+font-weight:700;
+flex:0 0 auto;
+}
+
+body{
+padding-bottom:100px;
+}
+
 *{
 box-sizing:border-box;
 }
@@ -742,8 +796,13 @@ document.querySelectorAll('.fade-in').forEach(el => {
   observer.observe(el);
 });
 </script>
+  <a class="sticky-ozon" href="https://www.ozon.ru/seller/marinas-hm/" target="_blank">
+  <span class="sticky-ozon-icon">OZ</span>
+  Смотреть на Ozon
+</a>
 </body>
 </html>
+
 
 
 
