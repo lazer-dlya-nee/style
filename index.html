@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarinaS HM</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    html{
+      scroll-behavior:smooth;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:'Inter', sans-serif;
+      background:#f7f5f2;
+      color:#3a3a3a;
+      line-height:1.5;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .page{
+      width:100%;
+      padding-bottom:110px;
+    }
+
+    header{
+      padding:40px 20px 28px;
+      text-align:center;
+      background:linear-gradient(to bottom, #efebe7 0%, #f7f5f2 100%);
+    }
+
+    .brand{
+      font-family:'Playfair Display', serif;
+      font-size:32px;
+      font-weight:600;
+      margin:0 0 10px;
+      letter-spacing:0.3px;
+    }
+
+    .subtitle{
+      margin:0 auto;
+      max-width:320px;
+      font-size:15px;
+      color:#6e675f;
+    }
+
+    .top-nav-wrap{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(247,245,242,0.92);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(191,165,138,0.15);
+    }
+
+    .color-nav{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      padding:14px 14px 16px;
+      scrollbar-width:none;
+    }
+
+    .color-nav::-webkit-scrollbar{
+      display:none;
+    }
+
+    .color-nav a{
+      flex:0 0 auto;
+      text-decoration:none;
+      color:#4a433d;
+      background:#ece5de;
+      border:1px solid rgba(191,165,138,0.18);
+      border-radius:999px;
+      padding:10px 16px;
+      font-size:14px;
+      white-space:nowrap;
+      transition:all 0.25s ease;
+    }
+
+    .color-nav a:hover,
+    .color-nav a.active{
+      background:#bfa58a;
+      color:#fff;
+      border-color:#bfa58a;
+    }
+
+    .intro{
+      padding:22px 20px 8px;
+    }
+
+    .intro-card{
+      background:#fbfaf8;
+      border:1px solid rgba(191,165,138,0.18);
+      border-radius:24px;
+      padding:22px 18px;
+      box-shadow:0 8px 24px rgba(58,58,58,0.04);
+    }
+
+    .intro-card h2{
+      margin:0 0 10px;
+      font-family:'Playfair Display', serif;
+      font-size:26px;
+      line-height:1.1;
+      font-weight:600;
+    }
+
+    .intro-card p{
+      margin:0;
+      color:#6e675f;
+      font-size:14px;
+    }
+
+    main{
+      padding:6px 0 10px;
+    }
+
+    .section{
+      padding:28px 20px 16px;
+      scroll-margin-top:88px;
+    }
+
+    .section + .section{
+      padding-top:30px;
+    }
+
+    .color-header{
+      margin-bottom:14px;
+    }
+
+    .color-title{
+      margin:0 0 8px;
+      font-family:'Playfair Display', serif;
+      font-size:34px;
+      line-height:1.05;
+      font-weight:600;
+      color:#2f2a26;
+    }
+
+    .color-text{
+      margin:0;
+      color:#6c655d;
+      font-size:15px;
+      max-width:320px;
+    }
+
+    .gallery-card{
+      margin-top:18px;
+      background:#fbfaf8;
+      border-radius:24px;
+      padding:10px;
+      border:1px solid rgba(191,165,138,0.16);
+      box-shadow:0 10px 30px rgba(58,58,58,0.05);
+    }
+
+    .gallery-main-wrap{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      background:#efe9e2;
+    }
+
+    .gallery-main{
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      border-radius:18px;
+      transition:opacity 0.35s ease, transform 0.35s ease;
+      opacity:1;
+      display:block;
+      background:#ece5de;
+    }
+
+    .thumbs{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      padding-top:12px;
+      padding-bottom:4px;
+      scrollbar-width:none;
+    }
+
+    .thumbs::-webkit-scrollbar{
+      display:none;
+    }
+
+    .thumbs img{
+      width:74px;
+      height:74px;
+      object-fit:cover;
+      border-radius:12px;
+      cursor:pointer;
+      opacity:0.7;
+      border:2px solid transparent;
+      flex:0 0 auto;
+      transition:opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+      background:#ece5de;
+    }
+
+    .thumbs img.active{
+      opacity:1;
+      border-color:#bfa58a;
+      transform:translateY(-1px);
+    }
+
+    .thumbs img:hover{
+      opacity:1;
+    }
+
+    .cta-bottom{
+      padding:28px 20px 6px;
+    }
+
+    .cta-box{
+      background:linear-gradient(180deg, #efe8e0 0%, #e8dfd5 100%);
+      border-radius:28px;
+      padding:26px 20px;
+      text-align:center;
+      border:1px solid rgba(191,165,138,0.22);
+    }
+
+    .cta-box h3{
+      margin:0 0 10px;
+      font-family:'Playfair Display', serif;
+      font-size:28px;
+      line-height:1.1;
+      font-weight:600;
+    }
+
+    .cta-box p{
+      margin:0;
+      color:#6c655d;
+      font-size:14px;
+    }
+
+    footer{
+      padding:22px 20px 30px;
+      text-align:center;
+      color:#7b746d;
+      font-size:13px;
+    }
+
+    .ozon-btn{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      width:calc(100% - 28px);
+      max-width:380px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:15px 18px;
+      border-radius:999px;
+      background:rgba(0,119,255,0.96);
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:16px;
+      box-shadow:0 14px 34px rgba(0,0,0,0.18);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      transition:transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      z-index:100;
+    }
+
+    .ozon-btn:hover{
+      transform:translateX(-50%) scale(1.02);
+      box-shadow:0 18px 42px rgba(0,0,0,0.22);
+    }
+
+    .ozon-icon{
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      background:#fff;
+      color:#0077ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:11px;
+      font-weight:700;
+      flex:0 0 auto;
+      letter-spacing:0.3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1 class="brand">MarinaS HM</h1>
+      <p class="subtitle">Вязаные сумочки-чехлы для телефона ручной работы</p>
+    </header>
+
+    <div class="top-nav-wrap">
+      <nav class="color-nav">
+        <a href="#beige">Бежевый</a>
+        <a href="#cranberry">Брусничный</a>
+        <a href="#bluegray">Сине-серый</a>
+        <a href="#graydenim">Серый деним</a>
+        <a href="#linen">Льняной</a>
+        <a href="#olive">Оливковый</a>
+        <a href="#pink">Розовый</a>
+        <a href="#white">Белый</a>
+        <a href="#yellow">Желтый</a>
+      </nav>
+    </div>
+
+    <section class="intro">
+      <div class="intro-card">
+        <h2>Тёплый handmade аксессуар<br>на каждый день</h2>
+        <p>Каждый чехол связан вручную и превращает телефон в стильную деталь образа. Выбери любимый оттенок и перейди на Ozon для покупки.</p>
+      </div>
+    </section>
+
+    <main>
+      <section class="section" id="beige">
+        <div class="color-header">
+          <h2 class="color-title">Бежевый</h2>
+          <p class="color-text">Нежный универсальный оттенок, который легко сочетается с любой одеждой и выглядит мягко, спокойно и очень аккуратно.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/beige/1.jpg" alt="Бежевый чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/beige/1.jpg" class="active" alt="">
+            <img src="images/beige/2.jpg" alt="">
+            <img src="images/beige/3.jpg" alt="">
+            <img src="images/beige/4.jpg" alt="">
+            <img src="images/beige/5.jpg" alt="">
+            <img src="images/beige/6.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cranberry">
+        <div class="color-header">
+          <h2 class="color-title">Брусничный</h2>
+          <p class="color-text">Сочный и выразительный оттенок с уютным характером. Делает аксессуар заметным и добавляет образу тёплый акцент.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/cranberry/1.jpg" alt="Брусничный чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/cranberry/1.jpg" class="active" alt="">
+            <img src="images/cranberry/2.jpg" alt="">
+            <img src="images/cranberry/3.jpg" alt="">
+            <img src="images/cranberry/4.jpg" alt="">
+            <img src="images/cranberry/5.jpg" alt="">
+            <img src="images/cranberry/6.jpg" alt="">
+            <img src="images/cranberry/7.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="bluegray">
+        <div class="color-header">
+          <h2 class="color-title">Сине-серый</h2>
+          <p class="color-text">Спокойный джинсовый тон с благородным настроением. Универсальный цвет, который смотрится современно и мягко.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/bluegray/1.jpg" alt="Сине-серый чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/bluegray/1.jpg" class="active" alt="">
+            <img src="images/bluegray/2.jpg" alt="">
+            <img src="images/bluegray/3.jpg" alt="">
+            <img src="images/bluegray/4.jpg" alt="">
+            <img src="images/bluegray/5.jpg" alt="">
+            <img src="images/bluegray/6.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="graydenim">
+        <div class="color-header">
+          <h2 class="color-title">Серый деним</h2>
+          <p class="color-text">Мягкий серый оттенок с современным характером. Выглядит сдержанно, чисто и легко вписывается в любой гардероб.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/graydenim/1.jpg" alt="Серый деним чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/graydenim/1.jpg" class="active" alt="">
+            <img src="images/graydenim/2.jpg" alt="">
+            <img src="images/graydenim/3.jpg" alt="">
+            <img src="images/graydenim/4.jpg" alt="">
+            <img src="images/graydenim/5.jpg" alt="">
+            <img src="images/graydenim/6.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="linen">
+        <div class="color-header">
+          <h2 class="color-title">Льняной</h2>
+          <p class="color-text">Натуральный светлый оттенок с ощущением лёгкости, простоты и спокойной элегантности в повседневном образе.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/linen/1.jpg" alt="Льняной чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/linen/1.jpg" class="active" alt="">
+            <img src="images/linen/2.jpg" alt="">
+            <img src="images/linen/3.jpg" alt="">
+            <img src="images/linen/4.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="olive">
+        <div class="color-header">
+          <h2 class="color-title">Оливковый</h2>
+          <p class="color-text">Природный глубокий тон, который смотрится спокойно, благородно и особенно красиво в уютных повседневных сочетаниях.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/olive/1.jpg" alt="Оливковый чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/olive/1.jpg" class="active" alt="">
+            <img src="images/olive/2.jpg" alt="">
+            <img src="images/olive/3.jpg" alt="">
+            <img src="images/olive/4.jpg" alt="">
+            <img src="images/olive/5.jpg" alt="">
+            <img src="images/olive/6.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pink">
+        <div class="color-header">
+          <h2 class="color-title">Розовый</h2>
+          <p class="color-text">Нежный и мягкий оттенок, который добавляет образу тепла, деликатности и приятного акцента без лишней яркости.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/pink/1.jpg" alt="Розовый чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/pink/1.jpg" class="active" alt="">
+            <img src="images/pink/2.jpg" alt="">
+            <img src="images/pink/3.jpg" alt="">
+            <img src="images/pink/4.jpg" alt="">
+            <img src="images/pink/5.jpg" alt="">
+            <img src="images/pink/6.jpg" alt="">
+            <img src="images/pink/7.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="white">
+        <div class="color-header">
+          <h2 class="color-title">Белый</h2>
+          <p class="color-text">Чистый светлый вариант, который выглядит особенно свежо, аккуратно и подчёркивает фактуру ручной вязки.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/white/1.jpg" alt="Белый чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/white/1.jpg" class="active" alt="">
+            <img src="images/white/2.jpg" alt="">
+            <img src="images/white/3.jpg" alt="">
+            <img src="images/white/4.jpg" alt="">
+            <img src="images/white/5.jpg" alt="">
+            <img src="images/white/6.jpg" alt="">
+            <img src="images/white/7.jpg" alt="">
+            <img src="images/white/8.jpg" alt="">
+            <img src="images/white/9.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="yellow">
+        <div class="color-header">
+          <h2 class="color-title">Желтый</h2>
+          <p class="color-text">Тёплый солнечный оттенок, который делает аксессуар живым, заметным и особенно уютным в повседневной стилизации.</p>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-main-wrap">
+            <img class="gallery-main" src="images/yellow/1.jpg" alt="Желтый чехол">
+          </div>
+          <div class="thumbs">
+            <img src="images/yellow/1.jpg" class="active" alt="">
+            <img src="images/yellow/2.jpg" alt="">
+            <img src="images/yellow/3.jpg" alt="">
+            <img src="images/yellow/4.jpg" alt="">
+            <img src="images/yellow/5.jpg" alt="">
+            <img src="images/yellow/6.jpg" alt="">
+            <img src="images/yellow/7.jpg" alt="">
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-bottom">
+        <div class="cta-box">
+          <h3>Выберите свой любимый цвет</h3>
+          <p>Посмотрите все варианты и перейдите на Ozon, чтобы оформить покупку.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      MarinaS HM · handmade accessories
+    </footer>
+  </div>
+
+  <a href="#" class="ozon-btn">
+    <span class="ozon-icon">OZ</span>
+    Смотреть на Ozon
+  </a>
+
+  <script>
+    document.querySelectorAll(".section").forEach(section => {
+      const main = section.querySelector(".gallery-main");
+      const thumbs = section.querySelectorAll(".thumbs img");
+
+      if (!main || !thumbs.length) return;
+
+      thumbs.forEach(thumb => {
+        thumb.addEventListener("click", () => {
+          const newSrc = thumb.getAttribute("src");
+
+          if (main.getAttribute("src") === newSrc) return;
+
+          main.style.opacity = "0";
+
+          setTimeout(() => {
+            main.src = newSrc;
+            main.style.opacity = "1";
+          }, 150);
+
+          thumbs.forEach(img => img.classList.remove("active"));
+          thumb.classList.add("active");
+        });
+      });
+    });
+
+    const sections = document.querySelectorAll(".section");
+    const navLinks = document.querySelectorAll(".color-nav a");
+
+    function setActiveNav() {
+      let currentId = "";
+
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) {
+          currentId = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + currentId) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    setActiveNav();
+    window.addEventListener("scroll", setActiveNav);
+  </script>
+</body>
+</html>
